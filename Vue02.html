@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dev id="app">
+        <p v-bind:title="title">Hello World</p>
+        <p v-if="seeseeme">let me see you</p>
+        <!-- v-text八能写为html标签对，but，v-html可以哟 -->
+        <dev v-text="h3"></dev>
+        <dev v-html="h3">还没变呢</dev>
+        <input type="button" value="一个v-on事件" v-on:click="add">{{num}}
+        <!-- @可代替v-on -->
+        <input type="button" value="一个v-on事件" @click="add">
+    </dev>
+    
+</body>
+<script src="./lib/vue.js"> </script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            seeseeme:true,
+            title:"你好世界",
+            h3:'<h3>这是一个h3标签对</h3>',
+            num:1
+        },
+        // methods用来写方法
+        methods: {
+            add(){
+                this.num++
+            }
+        }
+    })
+</script>
+</html>

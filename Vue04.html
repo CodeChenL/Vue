@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .n1{
+            color: orange;
+        }
+        .n2{
+            font-size: 45px;
+        }
+        .n3{
+            font-style: italic;
+        }
+        .n4{
+            font-size: 30px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="n1 n2 n3">Hello World</div>
+        <div v-bind:class="['n1','n2','n3']">Hello World</div>
+        <div v-bind:class="['n1',aaa ? 'n4':'n2','n3']">Hello World</div>
+        <br>
+        <input type="button" value="改变大小" v-on:click="aaa=!aaa">
+        <br>
+        <div v-bind:class="['n1','n2',{'n3':bbb}]">Hello World</div>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                aaa:true,
+                bbb:false
+            }
+        })
+    </script>
+</body>
+</html>

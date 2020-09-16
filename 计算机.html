@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model:value="num1">
+        <select v-model="w">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" v-model:value="num2">
+        <input type="button" value="=" v-on:click="add">
+        <input v-bind:value="num3">
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                num1:1,
+                num2:1,
+                num3:1,
+                w:"+"
+            },
+            methods: {
+                add(){
+                    if (vm.w=="+") {
+                        vm.num3=parseInt(vm.num1)+parseInt(vm.num2);
+                    }
+                    else if (vm.w=="-") {
+                        vm.num3=vm.num1-vm.num2;
+                    }
+                    else if (vm.w=="*") {
+                        vm.num3=vm.num1*vm.num2;
+                    }
+                    else if (vm.w=="/") {
+                        vm.num3=vm.num1/vm.num2;
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>
