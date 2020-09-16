@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        body{
+        *{
             margin: 0;
             padding: 0;
             list-style: none;
         }
 
-        .tab{
+        .tabs{
             border: 1px solid black;
             width: 560px;
             margin: 20px auto;
@@ -23,11 +23,24 @@
             height: 40px;
             line-height: 40px;
             text-align: center;
-            border: 1px;
+            border: 1px solid #d6d6d6;
             box-sizing: border-box;
             cursor: pointer;
         }
 
+        ul li.con{
+            background: orange;
+            color: white;
+        }
+
+        .content{
+            height: 300px;
+            display: none;
+        }
+
+        .content.show{
+            display: block;
+        }
     </style>
 </head>
 <body>
