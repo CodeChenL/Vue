@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-for="(item, index) in list" :key="index">
+            {{index}}----------{{item}}
+        </div>
+        <h3>中国猛男</h3>
+        <table border="1" cellspacing='0'>
+            <thead>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>地址</th>
+            </thead>
+            <tbody v-for="(item, index) in msg" :key="index">
+                <th>{{item.id}}</th>
+                <th>{{item.name}}</th>
+                <th>{{item.age}}</th>
+                <th>{{item.sex}}</th>
+                <th>{{item.add}}</th>
+            </tbody>
+        </table>
+    </div>
+    <script src="./lib/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                list:['a','b','c','d','e','f','g'],
+                msg:[
+                    {id:1,name:'坤坤',age:'24',sex:'男',add:'美国男子校队'},
+                    {id:2,name:'凡凡',age:'25',sex:'男',add:'加拿大电鳗'},
+                    {id:3,name:'小鹿',age:'26',sex:'男',add:'中国上海市大炮区'}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>
