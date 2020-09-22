@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">图书管理系统</div>
+                <div class="panel-body">
+                    <label>书号:</label>
+                    <input type="text">
+                    <label>名称:</label>
+                    <input type="text">
+                    <label>作者:</label>
+                    <input type="text">
+                    <label>价格:</label>
+                    <input type="text">
+                    <button type="button" class="btn btn-primary">添加</button>
+                    <button type="button" class="btn btn-success">提交</button>
+                </div>
+        
+                <!-- Table -->
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>图书编号</th>
+                            <th>图书名称</th>
+                            <th>作者</th>
+                            <th>价格</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <!-- 一般来说 v-for是用来展示表格的 -->
+                    <tbody v-for="(item, index) in books">
+                        <tr>
+                            <td>{{item.id}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.author}}</td>
+                            <td>{{item.price}}</td>
+                            <td>
+                                <button type="button" class="btn btn-info">修改</button>
+                                <button type="button" class="btn btn-danger">删除</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div> 
+    </div>
+</body>
+<script src="./lib/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            books:[
+            {id:1,name:"三国演义",author:"罗贯中",price:99},
+            {id:2,name:"水浒传",author:"施耐庵",price:99},
+            {id:3,name:"红楼梦",author:"曹雪芹",price:99},
+            {id:4,name:"西游记",author:"吴承恩",price:99},
+            ]
+        }
+        
+    })
+</script>
+</html>
