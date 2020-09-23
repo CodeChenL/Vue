@@ -13,14 +13,14 @@
             <div class="panel-heading">图书管理系统</div>
                 <div class="panel-body">
                     <label>书号:</label>
-                    <input type="text">
+                    <input type="text" v-model="id">
                     <label>名称:</label>
-                    <input type="text">
+                    <input type="text" v-model="name">
                     <label>作者:</label>
-                    <input type="text">
+                    <input type="text" v-model="author">
                     <label>价格:</label>
-                    <input type="text">
-                    <button type="button" class="btn btn-primary">添加</button>
+                    <input type="text" v-model="price">
+                    <button type="button" class="btn btn-primary" v-on:click="add()">添加</button>
                     <button type="button" class="btn btn-success">提交</button>
                 </div>
         
@@ -44,7 +44,7 @@
                             <td>{{item.price}}</td>
                             <td>
                                 <button type="button" class="btn btn-info">修改</button>
-                                <button type="button" class="btn btn-danger">删除</button>
+                                <button type="button" class="btn btn-danger" v-on:click="del(index)">删除</button>
                             </td>
                         </tr>
                     </tbody>
@@ -62,8 +62,37 @@
             {id:2,name:"水浒传",author:"施耐庵",price:99},
             {id:3,name:"红楼梦",author:"曹雪芹",price:99},
             {id:4,name:"西游记",author:"吴承恩",price:99},
-            ]
-        }
+            ],
+            id:'',
+            name:'',
+            author:'',
+            price:''
+        },
+        methods: {
+            add(){
+                if(this.id==null||this.id==''){
+                    alert('书号不可为空');
+                    return;
+                }
+                for (let i = 0; i < this.books.length; i++) {
+                    if (this.books[i].id==this.id) {
+                        alert("无法添加重复记录");
+                        return;
+                    }
+                    
+                }
+                this.books.push({
+                    id:this.id,
+                    name:this.name,
+                    author:this.author,
+                    price:this.price
+                })
+            },
+            del(index){
+                this.books.splice(index,1);
+            }
+            
+        },
         
     })
 </script>
