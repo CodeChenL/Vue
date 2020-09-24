@@ -21,7 +21,7 @@
                     <label>价格:</label>
                     <input type="text" v-model="price">
                     <button type="button" class="btn btn-primary" v-on:click="add()">添加</button>
-                    <button type="button" class="btn btn-success">提交</button>
+                    <button type="button" class="btn btn-success" v-on:click="addEdit()">提交修改</button>
                 </div>
         
                 <!-- Table -->
@@ -43,7 +43,7 @@
                             <td>{{item.author}}</td>
                             <td>{{item.price}}</td>
                             <td>
-                                <button type="button" class="btn btn-info">修改</button>
+                                <button type="button" class="btn btn-info" v-on:click="edit(item.id)">修改</button>
                                 <button type="button" class="btn btn-danger" v-on:click="del(index)">删除</button>
                             </td>
                         </tr>
@@ -90,9 +90,35 @@
             },
             del(index){
                 this.books.splice(index,1);
+            },
+            edit(id){
+                for (let i = 0 ; i < this.books.length; i++) {
+                    if (this.books[i].id==id) {
+                        this.id=this.books[i].id,
+                        this.name=this.books[i].name,
+                        this.author=this.books[i].author,
+                        this.price=this.books[i].price
+                    }
+                }
+            },
+            addEdit(){
+                if (this.id!=null&&this.id!="") {
+                    for (let i = 0; i < this.books.length; i++) {
+                        if (this.books[i].id==this.id) {
+                            this.books[i].id=this.id;
+                            this.books[i].name=this.name;
+                            this.books[i].author=this.author;
+                            this.books[i].price=this.price;
+                        }
+                    }
+                }else{
+                    alert("书名不能为空");
+                    return;
+                }
+                
             }
             
-        },
+        }
         
     })
 </script>
